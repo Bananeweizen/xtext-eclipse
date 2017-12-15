@@ -2,7 +2,8 @@ node {
 	properties([
 		[$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', numToKeepStr: '15']],
 		parameters([
-    		choice(name: 'DEPLOY_ENV', defaultValue: 'TESTING', description: 'The target environment', )
+			choice(choices: 'luna,oxygen,photon', description: 'What AWS region?', name: 'target_platform')
+  
    		])
 	])
 	
