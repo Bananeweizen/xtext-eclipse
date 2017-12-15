@@ -2,8 +2,7 @@ node {
 	properties([
 		[$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', numToKeepStr: '15']],
 		parameters([
-			choice(choices: 'luna,oxygen,photon', description: 'What AWS region?', name: 'target_platform')
-  
+			choice(choices: 'luna\noxygen\nphoton', description: 'Which Target Platform should be used?', name: 'target_platform')
    		])
 	])
 	
