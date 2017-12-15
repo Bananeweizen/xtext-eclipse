@@ -1,4 +1,7 @@
 node {
+	parameters {
+        string(name: 'Greeting', defaultValue: 'Hello', description: 'How should I greet the world?')
+    }
 	properties([
 		[$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', numToKeepStr: '15']]
 	])
@@ -19,10 +22,7 @@ node {
 		} else if ("photon" == params.target_platform) {
 			targetProfile = "-PusePhotonTarget"
 		}
-		wrap([$class:'Xvnc', useXauthority: true]) {
-			sh "${mvnHome}/bin/mvn --batch-mode -fae -Dmaven.test.failure.ignore=true -Dmaven.repo.local=.m2/repository -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn ${targetProfile} clean install"
-		}
-		step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/*.xml'])
+		echo "xxxxxx ${targetProfile}"
 	}
 	
 	archive 'build/**'
