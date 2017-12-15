@@ -2,7 +2,7 @@ node {
 	properties([
 		[$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', numToKeepStr: '15']],
 		parameters([
-    		string(name: 'DEPLOY_ENV', defaultValue: 'TESTING', description: 'The target environment', )
+    		choice(name: 'DEPLOY_ENV', defaultValue: 'TESTING', description: 'The target environment', )
    		])
 	])
 	
