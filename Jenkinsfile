@@ -1,9 +1,10 @@
 node {
-	parameters {
-        string(name: 'Greeting', defaultValue: 'Hello', description: 'How should I greet the world?')
-    }
+	
 	properties([
-		[$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', numToKeepStr: '15']]
+		[$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', numToKeepStr: '15']],
+		parameters {
+        	string(name: 'Greeting', defaultValue: 'Hello', description: 'How should I greet the world?')
+    	}
 	])
 	
 	stage('Checkout') {
